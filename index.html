@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title dir="ltr">CoverBetter: Easily create cover letters that work. No account needed, save as a PDF or copy & paste.</title>
+    <link href="styles/coverbetter.min.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+    <meta name="description" content="Writing a cover letter feels tedious, but necessary. CoverBetter makes it easier to write and maintain these during your application process." />
+
+    <meta property='og:type' content='website' />
+    <meta property='og:title' content='CoverBetter: Easily create cover letters that work. No account needed, save as a PDF or copy & paste.' />
+    <meta property='og:description' content='Writing a cover letter feels tedious, but necessary. CoverBetter makes it easier to write and maintain these during your application process.' />
+    <meta property='og:image' content='/images/sharing.png' />
+</head>
+<body>
+    <header>
+        <h1>Cover<span>Better</span></h1>
+        <a id="local-drafts" style="display: none;">Drafts</a>
+    </header>
+    
+    <div role="main">
+        <p>Create a re-usable cover letter: Add a company, title &amp; where you found it. Then focus on your cover letter itself. <a href="#more">Pro-tips?</a></p>
+        
+        <form>
+            <fieldset>
+                <label>
+                    <span>Company</span> 
+                    <input type="text" id="company" data-rel="company-rel">
+                </label> 
+                <label>
+                    <span>Job Title</span> 
+                    <input type="text" id="title" data-rel="title-rel">
+                </label> 
+                <label>
+                    <span>Found On</span> 
+                    <input type="text" id="location" data-rel="location-rel">
+                </label>
+            </fieldset>
+        </form>
+        
+        <div contenteditable id="cover-letter">
+            Howdy <b class="company-rel" data-blank="company_name"></b>-folk,<br><br>
+            I saw the posting for a <b class="title-rel" data-blank="job_title"></b> on <b class="location-rel" data-blank="where_you_found_this"></b> and it immediately struck me as a position I'd love to talk more about. [Add a compelling hook around the company&rsquo;s mission and why you&rsquo;d love to work there.]
+            <br><br>
+            [Why You’re a Great Fit: Add a paragraph tying one or two of the role requirements or what they want in the role to what you think you&rsquo;re great at, and why.]
+            <br><br>
+            [Sales Pitch: Add in your sales pitch offering around what you&rsquo;ve been doing, how you&rsquo;ve done it, why you&rsquo;ve done it, etc. Sell them on why you are the best candidate here.]
+            <br><br>
+            [Closing: Close it out with how you&rsquo;ll be a great match, and that you hope to talk soon to share more.]
+        </div>
+        
+        <textarea id="cover-letter-text" style="position: absolute; left: -9999px; top: -9999px"></textarea>
+        
+        <div class="ender">
+            <button type="button" id="download-file">Download</button> 
+            <span>or</span> 
+            <button type="button" id="save-local-draft" disabled="disabled">Save Draft</button> 
+            <a download="cover-letter.txt" id="downloadlink" style="display: none;">Get that file</a>
+        </div>
+    </div>
+    
+    <footer id="more">
+        <p>
+            <strong>Pro-tips</strong><br>
+            Use real-world examples (increased X by Y%), avoid generic clichés (<em>I’m a team player</em>), be confident (Weak: <em>I think I’d be a good fit</em> 👉 Strong: <em>My experience in X directly supports your need for Y</em>).
+        </p>
+        <small>&copy; now; passionately made by <a href="http://hire.jefff.co/" target="_blank">jefff</a>.</small>
+    </footer>
+    
+    <section id="draft-list">
+        <h2>Your saved drafts</h2>
+        <div></div>
+        <button type="button">Close</button>
+    </section>
+    
+    <!-- FontFaceObserver for font loading -->
+    <script>
+        // FontFaceObserver polyfill/implementation
+        (function() {
+            function g(m,l){document.addEventListener?m.addEventListener("scroll",l,!1):m.attachEvent("scroll",l)}
+            function f(l){document.body?l():document.addEventListener?document.addEventListener("DOMContentLoaded",function o(){document.removeEventListener("DOMContentLoaded",o);l()}):document.attachEvent("onreadystatechange",function m(){if("interactive"==document.readyState||"complete"==document.readyState){document.detachEvent("onreadystatechange",m),l()}})}
+            function c(l){this.a=document.createElement("div");this.a.setAttribute("aria-hidden","true");this.a.appendChild(document.createTextNode(l));this.b=document.createElement("span");this.c=document.createElement("span");this.h=document.createElement("span");this.f=document.createElement("span");this.g=-1;this.b.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.c.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.f.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.h.style.cssText="display:inline-block;width:200%;height:200%;font-size:16px;max-width:none;";this.b.appendChild(this.h);this.c.appendChild(this.f);this.a.appendChild(this.b);this.a.appendChild(this.c)}
+            function k(m,l){m.a.style.cssText="max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;left:-999px;white-space:nowrap;font:"+l+";"}
+            function i(m){var l=m.a.offsetWidth,o=l+100;m.f.style.width=o+"px";m.c.scrollLeft=o;m.b.scrollLeft=m.b.scrollWidth+100;return m.g!==l?(m.g=l,!0):!1}
+            function h(m,l){function p(){var q=o;i(q)&&null!==q.a.parentNode&&l(q.g)}var o=m;g(m.b,p);g(m.c,p);i(m)}
+            function e(m,l){var o=l||{};this.family=m;this.style=o.style||"normal";this.weight=o.weight||"normal";this.stretch=o.stretch||"normal"}
+            var d=null,b=null,a=null;function n(){if(null===b){var m=document.createElement("div");try{m.style.font="condensed 100px sans-serif"}catch(l){}b=""!==m.style.font}return b}
+            function j(m,l){return[m.style,m.weight,n()?m.stretch:"","100px",l].join(" ")}
+            e.prototype.load=function(m,l){var r=this,o=m||"BESbswy",q=l||3000,p=(new Date).getTime();return new Promise(function(u,s){null===a&&(a=!!window.FontFace);if(a){var v=new Promise(function(x,w){function y(){(new Date).getTime()-p>=q?w():document.fonts.load(j(r,r.family),o).then(function(z){1<=z.length?x():setTimeout(y,25)},function(){w()})}y()}),t=new Promise(function(w,x){setTimeout(x,q)});Promise.race([t,v]).then(function(){u(r)},function(){s(r)})}else{f(function(){function w(){var F;if(F=-1!=B&&-1!=A||-1!=B&&-1!=z||-1!=A&&-1!=z){(F=B!=A&&B!=z&&A!=z)||(null===d&&(F=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent),d=!!F&&(536>parseInt(F[1],10)||536===parseInt(F[1],10)&&11>=parseInt(F[2],10))),F=d&&(B==J&&A==J&&z==J||B==I&&A==I&&z==I||B==E&&A==E&&z==E)),F=!F}F&&(null!==D.parentNode&&D.parentNode.removeChild(D),clearTimeout(H),u(r))}function K(){if((new Date).getTime()-p>=q){null!==D.parentNode&&D.parentNode.removeChild(D),s(r)}else{var F=document.hidden;if(!0===F||void 0===F){B=C.a.offsetWidth,A=y.a.offsetWidth,z=x.a.offsetWidth,w()}H=setTimeout(K,50)}}var C=new c(o),y=new c(o),x=new c(o),B=-1,A=-1,z=-1,J=-1,I=-1,E=-1,D=document.createElement("div"),H=0;D.dir="ltr";k(C,j(r,"sans-serif"));k(y,j(r,"serif"));k(x,j(r,"monospace"));D.appendChild(C.a);D.appendChild(y.a);D.appendChild(x.a);document.body.appendChild(D);J=C.a.offsetWidth;I=y.a.offsetWidth;E=x.a.offsetWidth;K();h(C,function(F){B=F;w()});k(C,j(r,'"'+r.family+'",sans-serif'));h(y,function(F){A=F;w()});k(y,j(r,'"'+r.family+'",serif'));h(x,function(F){z=F;w()});k(x,j(r,'"'+r.family+'",monospace'))})}})};"undefined"!==typeof module?module.exports=e:(window.FontFaceObserver=e,window.FontFaceObserver.prototype.load=e.prototype.load)}());
+        </script>
+        
+        <!-- Modern JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="js/app-modern.js"></script>
+</body>
+</html> 

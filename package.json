@@ -1,37 +1,18 @@
 {
-  "name": "Coverltter",
+  "name": "CoverBetter",
+  "file_name": "coverbetter",
   "version": "0.1.0",
-  "description": "simple cover letter writing app",
-  "main": "webpack.config.js",
-  "scripts": {
-    "prestart": "webpack",
-    "start": "webpack-dev-server"
-  },
-  "author": "Jeff Doan <the.jeffdoan@gmail.com> (jefffis.github.io)",
-  "license": "ISC",
-  "dependencies": {
-    "react": "^0.14.0",
-    "react-dom": "^0.14.2",
-    "babel-core": "^6.2.1",
-    "babel-loader": "^6.2.0",
-    "babel-preset-es2015": "^6.1.18",
-    "babel-preset-react": "^6.1.18",
-    "babel-preset-stage-0": "^6.1.18",
-    "history": "^1.13.0",
-    "html-webpack-plugin": "^1.6.2",
-    "react-hot-loader": "^1.3.0",
-    "webpack": "^1.12.8",
-    "webpack-dev-server": "^1.12.1"
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "react",
-      "stage-0"
-    ]
-  },
+  "private": true,
   "devDependencies": {
-    "css-loader": "^0.23.1",
-    "style-loader": "^0.13.1"
+    "fontfaceobserver": "^2.0.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-htmlmin": "^2.0.0",
+    "grunt-contrib-sass": "~0.7.3",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-processhtml": "~0.3.3",
+    "grunt-yui-compressor": "~0.3.3"
+  },
+  "dependencies": {
+    "jspdf": "^3.0.1"
   }
 }
