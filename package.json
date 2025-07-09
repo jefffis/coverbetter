@@ -11,5 +11,8 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-processhtml": "~0.3.3",
     "grunt-yui-compressor": "~0.3.3"
+  },
+  "dependencies": {
+    "jspdf": "^3.0.1"
   }
 }
