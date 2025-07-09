@@ -310,7 +310,7 @@ class CoverBetter {
                 y += 10; // Extra space after last paragraph
                 const footerText = 'Powered by ';
                 const brandText = 'Coverbetter';
-                const url = 'https://coverbetter.co/?ref=PDF-download';
+                const url = 'https://coverbetter.netlify.app/?ref=PDF-download';
                 doc.setFont('courier', 'normal');
                 doc.setFontSize(12);
                 doc.setTextColor(102, 102, 102); // #666
