@@ -28,6 +28,8 @@ class CoverBetter {
         this.checkForExistingDrafts();
         this.setupMobileBehavior();
         this.loadFonts();
+        // Disable Download button by default
+        this.elements.downloadFile.disabled = true;
     }
     
     setupEventListeners() {
@@ -69,13 +71,16 @@ class CoverBetter {
             element.textContent = value;
         });
         
-        // Enable save button if any field has content
-        this.elements.saveDraft.disabled = !value;
+        // Enable save and download buttons if any field has content
+        const hasContent = this.elements.company.value || this.elements.title.value || this.elements.location.value;
+        this.elements.saveDraft.disabled = !hasContent;
+        this.elements.downloadFile.disabled = !hasContent;
     }
     
     checkCoverLetterChanges() {
         const hasChanges = this.elements.coverLetter.innerHTML !== this.originalCoverLetterContent;
         this.elements.saveDraft.disabled = !hasChanges;
+        this.elements.downloadFile.disabled = !hasChanges;
     }
     
     checkForExistingDrafts() {
