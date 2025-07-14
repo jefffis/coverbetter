@@ -258,6 +258,22 @@ class CoverBetter {
         const button = this.elements.downloadFile;
         setTimeout(() => button.classList.add('submitted'), 125);
         setTimeout(async () => {
+            // Save to localStorage first (same as Save Draft functionality)
+            if (!localStorage.getItem('has-local-drafts')) {
+                localStorage.setItem('has-local-drafts', 'true');
+            }
+            
+            this.localDraft = {
+                draftId: this.randomString,
+                company: this.elements.company.value,
+                title: this.elements.title.value,
+                location: this.elements.location.value,
+                coverLetter: this.replaceAllText(this.elements.coverLetter.innerHTML, "'", '&#39;')
+            };
+            
+            localStorage.setItem(`local-drafts-${this.randomString}`, JSON.stringify(this.localDraft));
+            this.showLocalDrafts();
+            
             let textContent = '';
             const coverLetterElement = this.elements.coverLetter;
             const textArea = this.elements.coverLetterText;
@@ -338,7 +354,9 @@ class CoverBetter {
             button.classList.remove('submitted');
             button.blur();
             if (!this.isMobile()) {
-                this.showSuccessBanner('Shwing! PDF downloaded.');
+                this.showSuccessBanner('Shwing! PDF downloaded and draft saved.');
+            } else {
+                this.showSuccessBanner('Shwing! Email opened and draft saved.');
             }
         }, 1500);
     }
